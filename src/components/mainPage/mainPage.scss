@@ -1,0 +1,18 @@
+.MainPage{
+
+    .flexBox {
+        
+        display: flex;
+        
+        .left {
+            flex: 0.5;
+            width: 50%;
+        }
+        
+        .right {
+            flex: 0.5;
+        }
+
+    }
+
+}
