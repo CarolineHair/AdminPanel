@@ -13,9 +13,12 @@ export default function Bookings() {
 
   return (
     <div className='bookings'>
-        {bookings ? bookings.map((item, index) => (
-          <BookingBox item={item}/>
-        )) : <h1>Loading...</h1>}
+      <h1>Bookinger:</h1>
+        <div className='bookingList'>
+          {bookings ? bookings.map((item, index) => (
+            <BookingBox item={item} className='BookingBox' />
+          )) : <h1>Loading...</h1>}
+        </div>
     </div>
   )
 }

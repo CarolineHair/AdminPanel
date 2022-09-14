@@ -1,3 +1,23 @@
 .bookings {
     margin: 0;
+    padding-bottom: 20px;
+
+    .bookingList{
+        overflow-y: scroll;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .left {
+        display: none;
+        visibility: hidden;
+    }
+
+    .right {
+        flex: 1;
+        width: 100%;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
 }

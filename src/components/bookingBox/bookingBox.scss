@@ -4,10 +4,60 @@
     text-align: left;
     margin:0 !important;
 
-    border-radius: 8px;
-    background-color: lightblue !important;
+    .box {
+        background-color: #3a404b;
+        border-radius: 8px;
 
+        margin-bottom: 20px;
+
+        display: flex;
+
+        .left {
+            flex: 0.7;
+            .title {
+                font-size: xx-large;
+            }
+    
+            .name {
+                font-size: x-large;
+            }
+    
+            .comment {
+                font-size: large;
+            }
+    
+            .date {
+                font-size: large;
+                padding-bottom: 12px;
+            }
+        }
+
+        .right {
+            flex: 0.3;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+
+            Button {
+                width: 100%;
+            }
+
+            .done {
+                background-color: green;
+            }
+            
+            .cancel {
+                background-color: orange;
+            }
+            
+            .delete {
+                background-color: red;
+            }
+        }
+    }
     p {
-        margin: 0;
-      }
+        margin-left: 12px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
