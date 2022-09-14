@@ -1,18 +1,54 @@
-import { React } from 'react';
-import { Button } from '@mui/material';
+import { React, useState } from 'react';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import './bookingBox.scss'
 
-export default function bookingBox({item}) {
+export default function BookingBox({item}) {
     const date = new Date(item.date);
 
+    const [openFin, setOpenFin] = useState();
+    const [openCan, setOpenCan] = useState();
+    const [openDel, setOpenDel] = useState();
+
     const don = (id) => {
-        alert('pressed done!');
+        setOpenFin(true);
     }
+    
     const can = (id) => {
-        alert('pressed cancel !');
+        setOpenCan(true);
     }
+    
     const del = (id) => {
-        alert('pressed delete!');
+        setOpenDel(true);
+    }
+    
+    const handleCloseFin = () => {
+        setOpenFin(false);
+    }
+    
+    const handleCloseCan = () => {
+        setOpenCan(false);
+    }
+    
+    const handleCloseDel = () => {
+        setOpenDel(false);
+    }
+
+    const fetchDelete = (id) => {
+        fetch(`https://carolinehair.herokuapp.com/delBooking/${id}`)
+        .then(handleCloseCan());
+        window.location.reload(true);
+    }
+
+    const fetchCancel = (id) => {
+        fetch(`https://carolinehair.herokuapp.com/cancel/${id}`)
+        .then(handleCloseDel());
+        window.location.reload(true);
+    }
+
+    const fetchFinished = (id) => {
+        fetch(`https://carolinehair.herokuapp.com/finished/${id}`)
+        .then(handleCloseFin());
+        window.location.reload(true);
     }
 
     return (
@@ -30,6 +66,59 @@ export default function bookingBox({item}) {
                     <Button variant='contained' className='delete' onClick={() => {del(item._id)}}>Slet</Button>
                 </div>
             </div>
-        </div>
+            <Dialog
+            open={openDel}
+            onClose={handleCloseDel}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">Er du helt sikker?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Er du helt sikker på du vil slette?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button variant='text' onClick={() => {fetchDelete(item._id)}}>Ja</Button>
+                    <Button variant='contained' onClick={handleCloseDel}>Nej</Button>
+                </DialogActions>
+            </Dialog>
+            
+            <Dialog
+            open={openFin}
+            onClose={handleCloseFin}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">Er du helt sikker?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Er du helt sikker på du vil færdiggøre?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button variant='text' onClick={() => {fetchFinished(item._id)}}>Ja</Button>
+                    <Button variant='contained' onClick={handleCloseFin}>Nej</Button>
+                </DialogActions>
+            </Dialog>
+            
+            <Dialog
+            open={openCan}
+            onClose={handleCloseCan}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">Er du helt sikker?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Er du helt sikker på du vil afmelde?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button variant='text' onClick={() => {fetchCancel(item._id)}}>Ja</Button>
+                    <Button variant='contained' onClick={handleCloseCan}>Nej</Button>
+                </DialogActions>
+            </Dialog>
+        </div>        
     )
 }

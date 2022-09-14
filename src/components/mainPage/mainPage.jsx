@@ -1,13 +1,14 @@
 import React from 'react'
 import './mainPage.scss'
 import Bookings from '../bookings/bookings'
+import Adding from '../adding/adding'
 
 export default function MainPage() {
   return (
     <div className='MainPage'>
         <div className='flexBox'>
             <div className='left'>
-                <h1>lorem</h1>
+                <Adding />
             </div>
             <div className='right'>
                 <Bookings />
