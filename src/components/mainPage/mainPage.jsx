@@ -7,7 +7,7 @@ export default function MainPage() {
     <div className='MainPage'>
         <div className='flexBox'>
             <div className='left'>
-                <h1>There</h1>
+                <h1>lorem</h1>
             </div>
             <div className='right'>
                 <Bookings />
