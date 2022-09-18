@@ -4,8 +4,27 @@
         border-radius: 8px;
         width: 98%;
 
-        TextField {
+        .TextField{
+            color:white !important;
+        }
+
+        .react-datetime-picker__inputGroup__divider {
+            color: black !important;
+        }
+        .react-datetime-picker__inputGroup__month {
+            color: black !important ;
+        }
+
+        .submitButton {
+            margin-top: 12px;
+        }
+
+        .TimePicker {
+            margin-top: 12px;
+            background-color: white;
+            border-radius: 8px;
             
+            color: white !important;
         }
     }
 }
