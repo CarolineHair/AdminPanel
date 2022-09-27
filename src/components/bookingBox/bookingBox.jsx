@@ -58,7 +58,7 @@ export default function BookingBox({item}) {
                     <p className='title'>{item.title}</p>
                     <p className='name'>{item.name}</p>
                     <p className='comment'>{item.comments}</p>
-                    <p className='date'>{date.getHours()}:{date.getMinutes()} {date.getDay()}/{date.getMonth()+1}/{date.getFullYear()}</p>
+                    <p className='date'>{date.getHours()}:{date.getMinutes().length == 2 ? date.getMinutes() : "0" + date.getMinutes()} {date.getDay()}/{date.getMonth()+1}/{date.getFullYear()}</p>
                 </div>
                 <div className='right'>
                     <Button variant='contained' className='done' onClick={() => {don(item._id)}}>Færdig</Button>
